@@ -160,9 +160,14 @@ namespace Bakery
       
       int amount = int.Parse(stringAmount);
       Bread orderedBread = new Bread(amount);
-      // string price = addBread(amount); //in method, turn price into $ amount string
-      // Console.Write($"your total is currently ${price}. Would you like anything else?")
+
+      int price = orderedBread.CalculatePrice();
+      usersReceipt.AddCost(price);
+      usersReceipt.checkReceipt();      
       Console.WriteLine($"You've ordered {orderedBread.Amount} rolls of bread!");
+      Console.WriteLine($"Your total for that will be ${price}.");
+      Console.WriteLine($"Your current total for the day is ${usersReceipt.Total}.");
+      Console.WriteLine("Can I get you anything else?");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Pay  ");
       Console.Write("Order  :  ");
@@ -171,9 +176,10 @@ namespace Bakery
 
       if (response == "pay")
       {
-        int price = orderedBread.CalculatePrice();
-        usersReceipt.AddCost(price);
-        Pay(price);
+        // int price = orderedBread.CalculatePrice();
+        // usersReceipt.AddCost(price);
+        // Pay(price);
+        PrintReceipt();
       }
       else if (response == "order")
       {
@@ -188,7 +194,7 @@ namespace Bakery
     {
       Console.WriteLine("Wonderful choice!");
         
-      //here, I will be establishing item being purchased as a string var, item, and pass that into pay, to display that the purchas for patries was __ price
+      //here, I will be establishing item being purchased as a string var, item, and pass that into pay, to display that the purchas for pastries was __ price
       //also, will be removing calulation from pay if and place directly under choosing amount of food item for bread as well, like seen bellow
 
       Console.WriteLine("How many would you like?");
@@ -197,7 +203,12 @@ namespace Bakery
 
       int price = orderedPastry.CalculatePrice();
       usersReceipt.AddCost(price);
+      // int receiptTotal = usersReceipt.checkReceipt();
+      usersReceipt.checkReceipt();
       Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
+      Console.WriteLine($"Your total for that will be ${price}.");
+      Console.WriteLine($"Your current total for the day is ${usersReceipt.Total}.");
+      Console.WriteLine("Can I get you anything else?");
       
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Pay  ");
@@ -207,7 +218,8 @@ namespace Bakery
 
       if (response == "pay")
       {
-        Pay(price);
+        // Pay(price);
+        PrintReceipt();
       }
       else if (response == "order")
       {
@@ -247,9 +259,10 @@ namespace Bakery
     }
     public static void PrintReceipt()
     {
-      int receiptTotal = usersReceipt.PrintReceipt();
-      Console.WriteLine($"Your total for that will be ${receiptTotal}.");
-      Console.WriteLine($"Thank yoy for stopping by! Enjoy!");
+      // int receiptTotal = usersReceipt.checkReceipt();
+      usersReceipt.checkReceipt();
+      Console.WriteLine($"Your total today will be ${usersReceipt.Total}.");
+      Console.WriteLine($"Thank you for stopping by! Enjoy!");
 
       
     }
