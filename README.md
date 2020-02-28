@@ -20,6 +20,7 @@ Welcome to Banana Bakery! We got bread! We got pastries! You better bet that you
 | Calculate price of their order | would you like to buy anything else? *no* | Your total will be $20.00! |
 | Allow user the choice to see special deals at the very beginning | Welcome! today we have special deal on the back of our menue: *presents menue with option to view backside of menue* | *flip* Todays specials: buy 2 get 1 free on bread! buy 1 for 2 or 3 for 5 on pastries! |
 | At end of order, calculate for discounts | *selects 3 bread* | Your total will be $10! |
+| Add multiple orders of specific items to one final receipt | *pay total* | *list out total items and their pricings* .. Your final total will be $30 |
 
 
 
