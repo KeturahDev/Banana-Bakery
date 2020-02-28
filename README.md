@@ -18,9 +18,7 @@ Welcome to Banana Bakery! We got bread! We got pastries! You better bet that you
 | Allow costomer to select which item they want | *types bread* | Wonderful choice! |
 | Allow costomer to select quantity of item they want | How many would you like? | *user inputs 4* |
 | Calculate price of their order | would you like to buy anything else? *no* | Your total will be $20.00! |
-| Inform customer of the days special deals | *dotnet start* | Welcome! today were having a special deal of buy 2 get 1 free on bread! heres a look at our menue: |
-| Inform customer of the days special deals | *dotnet start* | Welcome! today were having a special deal of buy 2 get 1 free on bread! heres a look at our menue: |
-| Allow user the choice to see special deals | Welcome! today we have special deal on the back of our menue: *presents menue with option to view backside of menue* | *flip* Todays specials: buy 2 get 1 free on bread! buy 1 for 2 or 3 for 5 on pastries! |
+| Allow user the choice to see special deals at the very beginning | Welcome! today we have special deal on the back of our menue: *presents menue with option to view backside of menue* | *flip* Todays specials: buy 2 get 1 free on bread! buy 1 for 2 or 3 for 5 on pastries! |
 | At end of order, calculate for discounts | *selects 3 bread* | Your total will be $10! |
 
 
