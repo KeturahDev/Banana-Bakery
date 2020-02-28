@@ -1,4 +1,5 @@
 using System;
+using Bakery.Models;
 
 namespace Bakery
 {
@@ -6,14 +7,27 @@ namespace Bakery
   {
     static void Main()
     {
-      //greeting
-      Console.WriteLine("Welcome to Banana Bakery!");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+
+      Console.WriteLine(@"                                                                                                          
+,--.   ,--.       ,--.                                    ,--.                                            
+|  |   |  | ,---. |  | ,---. ,---. ,--,--,--. ,---.     ,-'  '-. ,---.                                    
+|  |.'.|  || .-. :|  || .--'| .-. ||        || .-. :    '-.  .-'| .-. |                                   
+|   ,'.   |\   --.|  |\ `--.' '-' '|  |  |  |\   --.      |  |  ' '-' '                                   
+'--'   '--' `----'`--' `---' `---' `--`--`--' `----'      `--'   `---'                              ,---. 
+,-----.                                              ,-----.          ,--.                          |   | 
+|  |) /_  ,--,--.,--,--,  ,--,--.,--,--,  ,--,--.    |  |) /_  ,--,--.|  |,-. ,---. ,--.--.,--. ,--.|  .' 
+|  .-.  \' ,-.  ||      \' ,-.  ||      \' ,-.  |    |  .-.  \' ,-.  ||     /| .-. :|  .--' \  '  / |  |  
+|  '--' /\ '-'  ||  ||  |\ '-'  ||  ||  |\ '-'  |    |  '--' /\ '-'  ||  \  \\   --.|  |     \   '  `--'  
+`------'  `--`--'`--''--' `--`--'`--''--' `--`--'    `------'  `--`--'`--'`--'`----'`--'   .-'  /   .--.  
+                                                                                           `---'    '--' ");
+      Console.ResetColor();
       Bakery();
     }
     public static void Bakery()
     {
       Console.WriteLine("Would you like to take a look at our menue, or exit?");
-      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Menue  ");
       Console.Write("Leave  ");
       Console.ResetColor();
@@ -41,7 +55,7 @@ namespace Bakery
       Console.WriteLine("============================");
 
       Console.WriteLine("Give menue back, or place an order?");
-      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Give  ");
       Console.Write("Order  ");
       Console.ResetColor();
@@ -65,7 +79,7 @@ namespace Bakery
     public static void Order()
     {
       Console.WriteLine("Would you like bread or pastry?");
-      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Bread  ");
       Console.Write("Pastry  ");
       // Console.Write("change mind  ");
@@ -92,59 +106,61 @@ namespace Bakery
     {
       Console.WriteLine("Wonderful choice!");
 
-    //   Console.WriteLine("How many would you like?");
-    //   int amount = int.Parse(Console.ReadLine());
+      Console.WriteLine("How many would you like?");
+      int amount = int.Parse(Console.ReadLine());
+      Bread orderedBread = new Bread(amount);
+      // string price = addBread(amount); //in method, turn price into $ amount string
+      // Console.Write($"your total is currently ${price}. Would you like anything else?")
+      Console.WriteLine($"You've ordered {orderedBread.Amount} rolls of bread!");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.Write("Pay  ");
+      Console.Write("Order  ");
+      Console.ResetColor();
+      string response = Console.ReadLine().ToLower();
 
-    //   string price = addBread(amount); //in method, turn price into $ amount string
-    //   Console.Write($"your total is currently ${price}. Would you like anything else?")
-
-    //   Console.ForegroundColor = ConsoleColor.Blue;
-    //   Console.Write("Pay  ");
-    //   Console.Write("Oder  ");
-    //   Console.ResetColor();
-    //   string response = Console.ReadLine().ToLower();
-
-    //   if (response == "pay")
-    //   {
-    //     // Pay();
-    //   }
-    //   else if (response == "order")
-    //   {
-    //     Order();
-    //   }
-    //   else
-    //   {
-    //     Bread();
-    //   }
+      if (response == "pay")
+      {
+        // Pay();
+      }
+      else if (response == "order")
+      {
+        Order();
+      }
+      else
+      {
+        Bread();
+      }
     }
     public static void Pastry()
     {
       Console.WriteLine("Wonderful choice!");
 
-    //   Console.WriteLine("How many would you like?");
-    //   int amount = int.Parse(Console.ReadLine());
+      Console.WriteLine("How many would you like?");
+      int amount = int.Parse(Console.ReadLine());
+      Pastry orderedPastry = new Pastry(amount);
+      // string price = addPastry(amount); //in method, turn price into $ amount string
+      // Console.Write($"your total is currently ${price}. Would you like anything else?")
 
-    //   string price = addPastry(amount); //in method, turn price into $ amount string
-    //   Console.Write($"your total is currently ${price}. Would you like anything else?")
+      Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
+      
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.Write("Pay  ");
+      Console.Write("Order  ");
+      Console.ResetColor();
+      string response = Console.ReadLine().ToLower();
 
-    //   Console.ForegroundColor = ConsoleColor.Blue;
-    //   Console.Write("Pay  ");
-    //   Console.Write("Oder  ");
-    //   Console.ResetColor();
-    //   string response = Console.ReadLine().ToLower();
-
-    //   if (response == "pay")
-    //   {
-    //     // Pay();
-    //   }
-    //   else if (response == "order")
-    //   {
-    //     Order();
-    //   }
-    //   else
-    //   {
-    //     Pastry();
-    //   }
+      if (response == "pay")
+      {
+        // Pay();
+      }
+      else if (response == "order")
+      {
+        Order();
+      }
+      else
+      {
+        Pastry();
+      }
 
     }
   }
