@@ -48,6 +48,104 @@ namespace Bakery
 
       string response = Console.ReadLine().ToLower();
 
+      if (response == "give")
+      {
+        Bakery();
+      }
+      else if (response == "order")
+      {
+        Order();
+      }
+      else
+      {
+        Menue();
+      }
+
+    }
+    public static void Order()
+    {
+      Console.WriteLine("Would you like bread or pastry?");
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.Write("Bread  ");
+      Console.Write("Pastry  ");
+      // Console.Write("change mind  ");
+      // Console.Write("run out of store crying  ");
+      Console.ResetColor();
+
+      string response = Console.ReadLine().ToLower();
+
+      if (response == "bread")
+      {
+        Bread();
+      }
+      else if (response == "pastry")
+      {
+        Pastry();
+      }
+      else
+      {
+        Order();
+      }
+
+    }
+    public static void Bread()
+    {
+      Console.WriteLine("Wonderful choice!");
+
+    //   Console.WriteLine("How many would you like?");
+    //   int amount = int.Parse(Console.ReadLine());
+
+    //   string price = addBread(amount); //in method, turn price into $ amount string
+    //   Console.Write($"your total is currently ${price}. Would you like anything else?")
+
+    //   Console.ForegroundColor = ConsoleColor.Blue;
+    //   Console.Write("Pay  ");
+    //   Console.Write("Oder  ");
+    //   Console.ResetColor();
+    //   string response = Console.ReadLine().ToLower();
+
+    //   if (response == "pay")
+    //   {
+    //     // Pay();
+    //   }
+    //   else if (response == "order")
+    //   {
+    //     Order();
+    //   }
+    //   else
+    //   {
+    //     Bread();
+    //   }
+    }
+    public static void Pastry()
+    {
+      Console.WriteLine("Wonderful choice!");
+
+    //   Console.WriteLine("How many would you like?");
+    //   int amount = int.Parse(Console.ReadLine());
+
+    //   string price = addPastry(amount); //in method, turn price into $ amount string
+    //   Console.Write($"your total is currently ${price}. Would you like anything else?")
+
+    //   Console.ForegroundColor = ConsoleColor.Blue;
+    //   Console.Write("Pay  ");
+    //   Console.Write("Oder  ");
+    //   Console.ResetColor();
+    //   string response = Console.ReadLine().ToLower();
+
+    //   if (response == "pay")
+    //   {
+    //     // Pay();
+    //   }
+    //   else if (response == "order")
+    //   {
+    //     Order();
+    //   }
+    //   else
+    //   {
+    //     Pastry();
+    //   }
+
     }
   }
 }
