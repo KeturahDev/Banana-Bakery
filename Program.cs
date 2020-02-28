@@ -152,7 +152,10 @@ namespace Bakery
       Console.WriteLine("Wonderful choice!");
 
       Console.WriteLine("How many would you like?");
-      int amount = int.Parse(Console.ReadLine());
+      string stringAmount = Console.ReadLine();
+
+      
+      int amount = int.Parse(stringAmount);
       Bread orderedBread = new Bread(amount);
       // string price = addBread(amount); //in method, turn price into $ amount string
       // Console.Write($"your total is currently ${price}. Would you like anything else?")

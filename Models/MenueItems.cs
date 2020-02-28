@@ -11,10 +11,19 @@ namespace Bakery.Models
 
     public int CalculatePrice()
     {
-      //if amount == 3, discount, else
-      // if (Bread.Amount == 3)
-      //cost == amount * 5
-      return Amount * 5;
+      int price = 0;
+      for (int i = 1; i <= Amount; i++)
+      {
+        if (i % 3 == 0)
+        {
+          price = price; //its free
+        }
+        else
+        {
+          price = price += 5;
+        }
+      }
+      return price;
     }
   }
   public class Pastry
@@ -29,7 +38,6 @@ namespace Bakery.Models
     public int CalculatePrice()
     {
       //if amount == 3, discount, else
-      //cost == amount * 5
       return Amount * 2;
     }
   }
