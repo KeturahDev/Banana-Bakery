@@ -120,7 +120,8 @@ namespace Bakery
 
       if (response == "pay")
       {
-        // Pay();
+        int price = orderedBread.CalculatePrice();
+        Pay(price);
       }
       else if (response == "order")
       {
@@ -138,9 +139,6 @@ namespace Bakery
       Console.WriteLine("How many would you like?");
       int amount = int.Parse(Console.ReadLine());
       Pastry orderedPastry = new Pastry(amount);
-      // string price = addPastry(amount); //in method, turn price into $ amount string
-      // Console.Write($"your total is currently ${price}. Would you like anything else?")
-
       Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
       
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -151,7 +149,8 @@ namespace Bakery
 
       if (response == "pay")
       {
-        // Pay();
+        int price = orderedPastry.CalculatePrice();
+        Pay(price);
       }
       else if (response == "order")
       {
@@ -162,6 +161,31 @@ namespace Bakery
         Pastry();
       }
 
+    }
+    public static void Pay(int price)
+    {
+      Console.WriteLine($"Your total for that will be ${price}.");
+      Console.WriteLine("Can I get you anything else?");
+        
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.Write("Yes  ");
+      Console.Write("No  ");
+      Console.ResetColor();
+      string response = Console.ReadLine().ToLower();
+
+      if (response == "yes")
+      {
+        Order();
+      }
+      else if (response == "no")
+      {
+        Console.WriteLine("Thank you for shopping at Banana Bakery! Have a great day!");
+        //continued story..?
+      }
+      else
+      {
+        Pay(price);
+      }
     }
   }
 }
