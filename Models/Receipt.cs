@@ -20,7 +20,7 @@ namespace Bakery.Models
     {
       ItemPrices.Add(cost);
     }
-    public void checkReceipt()
+    public void PrintReceipt()
     {
       foreach (int price in ItemPrices)
       {

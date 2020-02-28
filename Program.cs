@@ -6,6 +6,9 @@ namespace Bakery
   public class Program
   {
     public static Receipt usersReceipt = new Receipt();
+    public static Pastry orderedPastry = new Pastry(0);
+    public static Bread orderedBread = new Bread(0);
+
     static void Main()
     {
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -159,15 +162,14 @@ namespace Bakery
 
       
       int amount = int.Parse(stringAmount);
-      Bread orderedBread = new Bread(amount);
+      orderedBread.Amount = amount;
 
       int price = orderedBread.CalculatePrice();
       usersReceipt.AddCost(price);
-      usersReceipt.checkReceipt();      
       Console.WriteLine($"You've ordered {orderedBread.Amount} rolls of bread!");
       Console.WriteLine($"Your total for that will be ${price}.");
-      Console.WriteLine($"Your current total for the day is ${usersReceipt.Total}.");
       Console.WriteLine("Can I get you anything else?");
+
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Pay  ");
       Console.Write("Order  :  ");
@@ -199,15 +201,12 @@ namespace Bakery
 
       Console.WriteLine("How many would you like?");
       int amount = int.Parse(Console.ReadLine());
-      Pastry orderedPastry = new Pastry(amount);
+      orderedPastry.Amount = amount;
 
       int price = orderedPastry.CalculatePrice();
       usersReceipt.AddCost(price);
-      // int receiptTotal = usersReceipt.checkReceipt();
-      usersReceipt.checkReceipt();
       Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
       Console.WriteLine($"Your total for that will be ${price}.");
-      Console.WriteLine($"Your current total for the day is ${usersReceipt.Total}.");
       Console.WriteLine("Can I get you anything else?");
       
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -218,7 +217,6 @@ namespace Bakery
 
       if (response == "pay")
       {
-        // Pay(price);
         PrintReceipt();
       }
       else if (response == "order")
@@ -229,42 +227,17 @@ namespace Bakery
       {
         Pastry();
       }
-
-    }
-    public static void Pay(int price)
-    {
-      Console.WriteLine($"Your total for that will be ${price}.");
-      Console.WriteLine("Can I get you anything else?");
-        
-      Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.Write("Yes  ");
-      Console.Write("No  :  ");
-      Console.ResetColor();
-      string response = Console.ReadLine().ToLower();
-
-      if (response == "yes")
-      {
-        Order();
-      }
-      else if (response == "no")
-      {
-        // Console.WriteLine("Thank you for shopping at Banana Bakery! Have a great day!");
-        PrintReceipt();
-        //continued story..?
-      }
-      else
-      {
-        Pay(price);
-      }
     }
     public static void PrintReceipt()
     {
-      // int receiptTotal = usersReceipt.checkReceipt();
-      usersReceipt.checkReceipt();
+      string amountOfBread = orderedBread.Amount.ToString();
+      string amountOfPastries = orderedPastry.Amount.ToString();
+      usersReceipt.PrintReceipt();
+      Console.WriteLine($"# of Bread --- {amountOfBread}");
+      Console.WriteLine($"# of Pastries --- {amountOfPastries}");
       Console.WriteLine($"Your total today will be ${usersReceipt.Total}.");
       Console.WriteLine($"Thank you for stopping by! Enjoy!");
 
-      
     }
   }
 }
