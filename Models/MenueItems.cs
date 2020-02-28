@@ -38,7 +38,14 @@ namespace Bakery.Models
     public int CalculatePrice()
     {
       //if amount == 3, discount, else
-      return Amount * 2;
+      if (Amount == 3)
+      {
+        return 5;
+      }
+      else
+      {
+        return Amount * 2;
+      }
     }
   }
 }
