@@ -5,6 +5,7 @@ namespace Bakery
 {
   public class Program
   {
+    public static Receipt usersReceipt = new Receipt();
     static void Main()
     {
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -26,16 +27,16 @@ namespace Bakery
     }
     public static void Bakery()
     {
-      Console.WriteLine("Would you like to take a look at our menue, or exit?");
+      Console.WriteLine("Would you like to take a look at our menu, or exit?");
       Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.Write("Menue  ");
-      Console.Write("Leave  ");
+      Console.Write("Menu  ");
+      Console.Write("Leave  :  ");
       Console.ResetColor();
       string response = Console.ReadLine().ToLower();
       
-      if (response == "menue")
+      if (response == "menu")
       {
-        Menue();
+        Menu();
       }
       else if (response == "leave")
       {
@@ -46,22 +47,23 @@ namespace Bakery
         Main();
       }
     }
-    public static void Menue()
+    public static void Menu()
     {
-      Console.WriteLine("Here's a menue. You can flip to the back as well to see our special deals.");
+      Console.WriteLine("Here's a menu. You can flip to the back as well to see our special deals.");
       Console.ForegroundColor = ConsoleColor.Black;
       Console.BackgroundColor = ConsoleColor.DarkCyan;
-      Console.WriteLine("\n=============================");
+      Console.WriteLine("\n           Front             ");
+      Console.WriteLine(" =========================== ");
       Console.WriteLine(" Bread - - -      $5         ");
       Console.WriteLine(" Pastry - - -     $2         ");
-      Console.WriteLine("=============================\n");
+      Console.WriteLine(" =========================== \n");
       Console.ResetColor();
 
-      Console.WriteLine("Give menue back, or place an order?");
+      Console.WriteLine("Give menu back, or place an order?");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Give  ");
       Console.Write("Order  ");
-      Console.Write("Flip  ");
+      Console.Write("Flip  :  ");
       Console.ResetColor();
 
       string response = Console.ReadLine().ToLower();
@@ -76,29 +78,30 @@ namespace Bakery
       }
       else if (response == "flip")
       {
-        FlippedMenue();
+        FlippedMenu();
       }
       else
       {
-        Menue();
+        Menu();
       }
 
     }
-    public static void FlippedMenue()
+    public static void FlippedMenu()
     {
       Console.ForegroundColor = ConsoleColor.Black;
       Console.BackgroundColor = ConsoleColor.DarkCyan;
-      Console.WriteLine("\n=============================");
+      Console.WriteLine("\n            Back             ");
+      Console.WriteLine(" =========================== ");
       Console.WriteLine(" Bread - - Buy 2 get 1 FREE! ");
       Console.WriteLine(" Pastry - -    3 for $5!     ");
-      Console.WriteLine("=============================\n");
+      Console.WriteLine(" =========================== \n");
       Console.ResetColor();
 
-      Console.WriteLine("Give menue back, or place an order?");
+      Console.WriteLine("Give menu back, or place an order?");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Give  ");
       Console.Write("Order  ");
-      Console.Write("Flip  ");
+      Console.Write("Flip  :  ");
       Console.ResetColor();
 
       string response = Console.ReadLine().ToLower();
@@ -113,11 +116,11 @@ namespace Bakery
       }
       else if (response == "flip")
       {
-        Menue();
+        Menu();
       }
       else
       {
-        FlippedMenue();
+        FlippedMenu();
       }
 
     }
@@ -126,7 +129,7 @@ namespace Bakery
       Console.WriteLine("Would you like bread or pastry?");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Bread  ");
-      Console.Write("Pastry  ");
+      Console.Write("Pastry  :  ");
       // Console.Write("change mind  ");
       // Console.Write("run out of store crying  ");
       Console.ResetColor();
@@ -162,13 +165,14 @@ namespace Bakery
       Console.WriteLine($"You've ordered {orderedBread.Amount} rolls of bread!");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Pay  ");
-      Console.Write("Order  ");
+      Console.Write("Order  :  ");
       Console.ResetColor();
       string response = Console.ReadLine().ToLower();
 
       if (response == "pay")
       {
         int price = orderedBread.CalculatePrice();
+        usersReceipt.AddCost(price);
         Pay(price);
       }
       else if (response == "order")
@@ -183,21 +187,26 @@ namespace Bakery
     public static void Pastry()
     {
       Console.WriteLine("Wonderful choice!");
+        
+      //here, I will be establishing item being purchased as a string var, item, and pass that into pay, to display that the purchas for patries was __ price
+      //also, will be removing calulation from pay if and place directly under choosing amount of food item for bread as well, like seen bellow
 
       Console.WriteLine("How many would you like?");
       int amount = int.Parse(Console.ReadLine());
       Pastry orderedPastry = new Pastry(amount);
+
+      int price = orderedPastry.CalculatePrice();
+      usersReceipt.AddCost(price);
       Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
       
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Pay  ");
-      Console.Write("Order  ");
+      Console.Write("Order  :  ");
       Console.ResetColor();
       string response = Console.ReadLine().ToLower();
 
       if (response == "pay")
       {
-        int price = orderedPastry.CalculatePrice();
         Pay(price);
       }
       else if (response == "order")
@@ -217,7 +226,7 @@ namespace Bakery
         
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Yes  ");
-      Console.Write("No  ");
+      Console.Write("No  :  ");
       Console.ResetColor();
       string response = Console.ReadLine().ToLower();
 
@@ -227,13 +236,22 @@ namespace Bakery
       }
       else if (response == "no")
       {
-        Console.WriteLine("Thank you for shopping at Banana Bakery! Have a great day!");
+        // Console.WriteLine("Thank you for shopping at Banana Bakery! Have a great day!");
+        PrintReceipt();
         //continued story..?
       }
       else
       {
         Pay(price);
       }
+    }
+    public static void PrintReceipt()
+    {
+      int receiptTotal = usersReceipt.PrintReceipt();
+      Console.WriteLine($"Your total for that will be ${receiptTotal}.");
+      Console.WriteLine($"Thank yoy for stopping by! Enjoy!");
+
+      
     }
   }
 }
