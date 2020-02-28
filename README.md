@@ -14,7 +14,7 @@ Welcome to Banana Bakery! We got bread! We got pastries! You better bet that you
 | Specification | Example Input | Example Output |
 | :------------- |:-------------| :-------------------|
 | Greet costomer and allow them to look at menue or leave game | *dotnet run* | Welcome to Banana Bakery! would you like to look at the menue or leave? |
-| Greet costomer and present menue | *dotnet run* | Welcome to Banana Bakery! *display menue with 2 items and their prices (bread -5, pastry -2)* |
+| Present menue, allow them to give it back or order | *menue* | *display menue with 2 items and their prices (bread -5, pastry -2)* would you like to give it back or order? |
 | Allow costomer to select which item they want | *types bread* | Wonderful choice! |
 | Allow costomer to select quantity of item they want | How many would you like? | *user inputs 4* |
 | Calculate prive of their order | would you like to buy anything else? *no* | Your total will be $20.00! |
