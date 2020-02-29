@@ -25,6 +25,7 @@ namespace Bakery
 |  '--' /\ '-'  ||  ||  |\ '-'  ||  ||  |\ '-'  |    |  '--' /\ '-'  ||  \  \\   --.|  |     \   '  `--'  
 `------'  `--`--'`--''--' `--`--'`--''--' `--`--'    `------'  `--`--'`--'`--'`----'`--'   .-'  /   .--.  
                                                                                            `---'    '--' ");
+      Console.WriteLine("We dont have bananas, but you'll go bananas for our baked goods!\n\n");
       Console.ResetColor();
       Bakery();
     }
@@ -35,31 +36,34 @@ namespace Bakery
       Console.Write("Menu  ");
       Console.Write("Leave  :  ");
       Console.ResetColor();
-      string response = Console.ReadLine().ToLower();
-      
-      if (response == "menu")
+
+      string greetingResponse = Console.ReadLine().ToLower();
+      if (greetingResponse == "menu")
       {
         Menu();
       }
-      else if (response == "leave")
+      else if (greetingResponse == "leave")
       {
         Console.WriteLine("have a nice day!");
       }
       else
       {
-        Main();
+        Bakery();
       }
     }
+
     public static void Menu()
     {
       Console.WriteLine("Here's a menu. You can flip to the back as well to see our special deals.");
-      Console.ForegroundColor = ConsoleColor.Black;
-      Console.BackgroundColor = ConsoleColor.DarkCyan;
-      Console.WriteLine("\n           Front             ");
-      Console.WriteLine(" =========================== ");
-      Console.WriteLine(" Bread - - -      $5         ");
-      Console.WriteLine(" Pastry - - -     $2         ");
-      Console.WriteLine(" =========================== \n");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.BackgroundColor = ConsoleColor.DarkBlue;
+      Console.WriteLine("\n+-----------------------------+");
+      Console.WriteLine("|             Menu            |");
+      Console.WriteLine("| =========================== |");
+      Console.WriteLine("|  Bread - - -       $5       |");
+      Console.WriteLine("|  Pastry - - -      $2       |");
+      Console.WriteLine("| =========================== |");
+      Console.WriteLine("+-----------------------------+\n");
       Console.ResetColor();
 
       Console.WriteLine("Give menu back, or place an order?");
@@ -70,7 +74,6 @@ namespace Bakery
       Console.ResetColor();
 
       string response = Console.ReadLine().ToLower();
-
       if (response == "give")
       {
         Bakery();
@@ -87,17 +90,18 @@ namespace Bakery
       {
         Menu();
       }
-
     }
     public static void FlippedMenu()
     {
-      Console.ForegroundColor = ConsoleColor.Black;
-      Console.BackgroundColor = ConsoleColor.DarkCyan;
-      Console.WriteLine("\n            Back             ");
-      Console.WriteLine(" =========================== ");
-      Console.WriteLine(" Bread - - Buy 2 get 1 FREE! ");
-      Console.WriteLine(" Pastry - -    3 for $5!     ");
-      Console.WriteLine(" =========================== \n");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.BackgroundColor = ConsoleColor.DarkBlue;
+      Console.WriteLine("\n+-----------------------------+");
+      Console.WriteLine("|            Deals            |");
+      Console.WriteLine("| =========================== |");
+      Console.WriteLine("| Bread - - Buy 2 get 1 FREE! |");
+      Console.WriteLine("| Pastry - -    3 for $5!     |");
+      Console.WriteLine("| =========================== |");
+      Console.WriteLine("+-----------------------------+\n");
       Console.ResetColor();
 
       Console.WriteLine("Give menu back, or place an order?");
@@ -108,7 +112,6 @@ namespace Bakery
       Console.ResetColor();
 
       string response = Console.ReadLine().ToLower();
-
       if (response == "give")
       {
         Bakery();
@@ -125,20 +128,29 @@ namespace Bakery
       {
         FlippedMenu();
       }
-
     }
+
     public static void Order()
     {
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine(@" 
+          .----------'    '-.
+          /  .      '     .   \\
+        /        '    .      /|
+        /      .             \ /
+      /  ' .       .     .  || 
+      /.___________    '    / /
+      |._          '------'| /
+      '.............______.-'                            
+      ");
+      Console.ResetColor();
       Console.WriteLine("Would you like bread or pastry?");
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.Write("Bread  ");
       Console.Write("Pastry  :  ");
-      // Console.Write("change mind  ");
-      // Console.Write("run out of store crying  ");
       Console.ResetColor();
 
       string response = Console.ReadLine().ToLower();
-
       if (response == "bread")
       {
         Bread();
@@ -155,7 +167,7 @@ namespace Bakery
     }
     public static void Bread()
     {
-      Console.WriteLine("Wonderful choice!");
+      Console.WriteLine("Get that bread!");
 
       Console.WriteLine("How many would you like?");
       string stringAmount = Console.ReadLine();
@@ -166,8 +178,18 @@ namespace Bakery
 
       int price = orderedBread.CalculatePrice();
       usersReceipt.AddCost(price);
-      Console.WriteLine($"You've ordered {orderedBread.Amount} rolls of bread!");
-      Console.WriteLine($"Your total for that will be ${price}.");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write($"You've ordered ");
+      Console.ForegroundColor = ConsoleColor.Magenta;
+      Console.Write($"{orderedBread.Amount}");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.WriteLine(" rolls of bread!");
+      Console.Write($"Your total for that will be");
+      Console.ForegroundColor = ConsoleColor.Magenta;
+      Console.Write($" ${price}");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.WriteLine(".");
+      Console.ResetColor();
       Console.WriteLine("Can I get you anything else?");
 
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -178,9 +200,6 @@ namespace Bakery
 
       if (response == "pay")
       {
-        // int price = orderedBread.CalculatePrice();
-        // usersReceipt.AddCost(price);
-        // Pay(price);
         PrintReceipt();
       }
       else if (response == "order")
@@ -194,19 +213,25 @@ namespace Bakery
     }
     public static void Pastry()
     {
-      Console.WriteLine("Wonderful choice!");
-        
-      //here, I will be establishing item being purchased as a string var, item, and pass that into pay, to display that the purchas for pastries was __ price
-      //also, will be removing calulation from pay if and place directly under choosing amount of food item for bread as well, like seen bellow
-
+      Console.WriteLine("Sweet! Haha- get it?");
       Console.WriteLine("How many would you like?");
       int amount = int.Parse(Console.ReadLine());
       orderedPastry.Amount = amount;
 
       int price = orderedPastry.CalculatePrice();
       usersReceipt.AddCost(price);
-      Console.WriteLine($"You've ordered {orderedPastry.Amount} pastries!");
-      Console.WriteLine($"Your total for that will be ${price}.");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write($"You've ordered ");
+      Console.ForegroundColor = ConsoleColor.Magenta;
+      Console.Write($"{orderedPastry.Amount}");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.WriteLine(" rolls of bread!");
+      Console.Write($"Your total for that will be");
+      Console.ForegroundColor = ConsoleColor.Magenta;
+      Console.Write($" ${price}");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.WriteLine(".");
+      Console.ResetColor();
       Console.WriteLine("Can I get you anything else?");
       
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -233,9 +258,20 @@ namespace Bakery
       string amountOfBread = orderedBread.Amount.ToString();
       string amountOfPastries = orderedPastry.Amount.ToString();
       usersReceipt.PrintReceipt();
-      Console.WriteLine($"# of Bread --- {amountOfBread}");
-      Console.WriteLine($"# of Pastries --- {amountOfPastries}");
-      Console.WriteLine($"Your total today will be ${usersReceipt.Total}.");
+
+      Console.WriteLine($"Here's your receipt:");
+      Console.ForegroundColor = ConsoleColor.Black;
+      Console.BackgroundColor = ConsoleColor.White;
+      Console.WriteLine($"\n+--------------------------+");
+      Console.WriteLine($"|         receipt          |");
+      Console.WriteLine($"|  ----------------------  |");
+      Console.WriteLine($"|   # of Bread --- {amountOfBread}       |");
+      Console.WriteLine($"|   # of Pastries --- {amountOfPastries}    |");
+      Console.WriteLine($"|                          |");
+      Console.WriteLine($"|   Overall Total: ${usersReceipt.Total}     |");
+      Console.WriteLine($"+--------------------------+\n");
+      Console.ResetColor();
+      Console.ForegroundColor = ConsoleColor.Magenta;
       Console.WriteLine($"Thank you for stopping by! Enjoy!");
 
     }
