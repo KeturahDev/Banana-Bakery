@@ -3,12 +3,10 @@ namespace Bakery.Models
   public class Bread
   {
     public int Amount {get; set;}
-
     public Bread(int amount)
     {
       Amount = amount;
     }
-
     public int CalculatePrice()
     {
       int price = 0;
@@ -26,15 +24,14 @@ namespace Bakery.Models
       return price;
     }
   }
+
   public class Pastry
   {
     public int Amount {get; set;}
-
     public Pastry(int amount)
     {
       Amount = amount;
     }
-
     public int CalculatePrice()
     {
       if (Amount == 3)

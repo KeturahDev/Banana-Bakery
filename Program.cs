@@ -29,6 +29,7 @@ namespace Bakery
       Console.ResetColor();
       Bakery();
     }
+
     public static void Bakery()
     {
       Console.WriteLine("Would you like to take a look at our menu, or exit?");
@@ -91,6 +92,7 @@ namespace Bakery
         Menu();
       }
     }
+
     public static void FlippedMenu()
     {
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -165,6 +167,7 @@ namespace Bakery
       }
 
     }
+
     public static void Bread()
     {
       Console.WriteLine("Get that bread!");
@@ -211,6 +214,7 @@ namespace Bakery
         Bread();
       }
     }
+
     public static void Pastry()
     {
       Console.WriteLine("Sweet! Haha- get it?");
@@ -253,6 +257,7 @@ namespace Bakery
         Pastry();
       }
     }
+    
     public static void PrintReceipt()
     {
       string amountOfBread = orderedBread.Amount.ToString();
