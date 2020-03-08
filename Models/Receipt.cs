@@ -5,14 +5,13 @@ namespace Bakery.Models
 {
   public class Receipt
   {
-    public List<int> itemsPrices = new List<int>() {0};
     public int Total { get; set; }
-    public List<int> ItemPrices { get; set; }
-    public Receipt()
-    {
-      ItemPrices = itemsPrices;
-      Total = 0;
-    }
+    public List<int> ItemPrices { get; set; } = new List<int>();
+    // public Receipt()
+    // {
+    //   ItemPrices = itemsPrices;
+    //   Total = 0;
+    // }
     public void AddCost(int cost)
     {
       ItemPrices.Add(cost);
