@@ -1,6 +1,6 @@
 # Banana Bakery
 
-#### C# Week One Friday Project _28th Feb. 2020_
+#### C# Week One Friday Project _March 7th. 2020_
 
 #### By _**Keturah Howard**_
 
@@ -52,10 +52,10 @@ Welcome to Banana Bakery! We got bread! We got pastries! You better bet that you
 
 
 ## Known Bugs
-Currently there's two known bugs- 1) When given the choice to input a number for quantity of bread or pastry, if you type in a word, the game will crash and youll have to restart. 2) When you add one type of item, then go back to add more of that same type, the second entry will overwrite the first one instead of compiling them together.
+Currently there's nno known bugs.
 
 ## Contact Info 
-Currently theres two known bugs, however, if there are any issues running this website I would love feedback! Please email me at keturah.dev@gmail.com.
+Currently there's no known bugs, however, if there are any issues running this website I would love feedback! Please email me at keturah.dev@gmail.com.
 
 ## License
 
