@@ -5,9 +5,10 @@ namespace Bakery
 {
   public class Program
   {
-    public static Receipt usersReceipt = new Receipt();
-    public static Pastry orderedPastry = new Pastry(0);
-    public static Bread orderedBread = new Bread(0);
+    //1) 
+    public static Receipt usersReceipt {get;set;} = new Receipt();
+    public static Pastry orderedPastry {get;set;} = new Pastry(0);
+    public static Bread orderedBread {get;set;} = new Bread(0);
 
     static void Main()
     {
@@ -170,17 +171,17 @@ namespace Bakery
 
     public static void Bread()
     {
+      //user interaction
       Console.WriteLine("Get that bread!");
-
       Console.WriteLine("How many would you like?");
       string stringAmount = Console.ReadLine();
-
-      
+      //getting amount
       int amount = int.Parse(stringAmount);
-      orderedBread.Amount = amount;
-
+      orderedBread.AddToTotalAmount(amount);
+      //calculating price
       int price = orderedBread.CalculatePrice();
       usersReceipt.AddCost(price);
+      //feedback to costomer
       Console.ForegroundColor = ConsoleColor.Green;
       Console.Write($"You've ordered ");
       Console.ForegroundColor = ConsoleColor.Magenta;
@@ -220,7 +221,7 @@ namespace Bakery
       Console.WriteLine("Sweet! Haha- get it?");
       Console.WriteLine("How many would you like?");
       int amount = int.Parse(Console.ReadLine());
-      orderedPastry.Amount = amount;
+      orderedPastry.AddToTotalAmount(amount);
 
       int price = orderedPastry.CalculatePrice();
       usersReceipt.AddCost(price);

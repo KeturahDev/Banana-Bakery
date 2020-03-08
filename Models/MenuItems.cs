@@ -14,7 +14,7 @@ namespace Bakery.Models
       {
         if (i % 3 == 0)
         {
-          price = price; //its free
+          price = price +=0 ; //its free
         }
         else
         {
@@ -22,6 +22,10 @@ namespace Bakery.Models
         }
       }
       return price;
+    }
+    public void AddToTotalAmount(int amount)
+    {
+      Amount = Amount += amount;
     }
   }
 
@@ -42,6 +46,10 @@ namespace Bakery.Models
       {
         return Amount * 2;
       }
+    }
+    public void AddToTotalAmount(int amount)
+    {
+      Amount = Amount += amount;
     }
   }
 }
