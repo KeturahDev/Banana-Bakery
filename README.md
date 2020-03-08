@@ -48,7 +48,7 @@ Welcome to Banana Bakery! We got bread! We got pastries! You better bet that you
 * Git
 * VS Code
 * C#
-* .NET
+* .NET 2.2
 
 
 ## Known Bugs
